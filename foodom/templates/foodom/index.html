@@ -1,0 +1,82 @@
+{% extends "foodom/layout.html" %}
+{% load static %}
+
+{% block body %}
+    <div id="index-view" style="display: none;">
+        <h3 id="index-welcome"></h3> <!--Pie chart for breakfast, lunch, dinner. Animated Progress Bar for calories/consumed-->
+        <br>
+        <div class="mega-header-container">
+            <div class="food-header-container">
+                <h3 class="foods-title" style="display: block;">Foods</h3>
+                <div class="foods-actions">
+                    <a class="add-foods" href="{% url 'addfood' %}" style="display: block;">Add Food</a>
+                    <button class="btn btn-primary" onclick="removeFoods()">Start New Day</button>
+                </div>
+            </div>
+            <div class="stats-header-container">
+                <h3 class="stats-title">Stats</h3>
+            </div>
+        </div>
+        <div class="mega-container">
+            <div class="food-container">
+                {% for meal in meals %}
+                    <div class="food">
+                        {% if meal.category == 'Breakfast' %}
+                            <i class="egg fas fa-egg"></i>
+                        {% elif meal.category == 'Lunch' %}
+                            <i class="chicken fas fa-drumstick-bite"></i>
+                        {% elif meal.category == 'Dinner' %}
+                            <i class="spoonfork fas fa-utensils"></i>
+                        {% elif meal.category == 'Drink' %}
+                            <i class="drink fas fa-beer"></i>
+                        {% elif meal.category == 'Fruit/Vegetable' %}
+                            <i class="fruit fas fa-apple-alt"></i>
+                        {% elif meal.category == 'Dessert' %}
+                            <i class="dessert fas fa-ice-cream"></i>
+                        {% else %}
+                            <i class="cookie fas fa-cookie-bite"></i>
+                        {% endif %}
+                        <div class="food-name"><div class="show-category">{{ meal.category }}</div>: {{ meal.name }}</div>
+                        <div class="food-calories">{{ meal.calories }} calories</div>
+                    </div>
+                {% endfor %}
+            </div>
+            <div class="stats-container">
+                <div class="alert alert-danger limit-warning" role="alert">
+                    You have met/exceeded your calorie limit! 
+                </div>
+                <div class="progress-bar">
+                    <div class="progress-completed">
+                        
+                    </div>
+                </div>
+                <div class="progress-words">
+                
+                </div>
+                <br><br>
+                <div class="pie-charts">
+                    <div class="pie-title">
+                        Calorie Breakdown
+                    </div>
+                    <div id="category-breakdown">
+                        
+                    </div>
+                    <div class="pie-title">
+                        Meal Breakdown
+                    </div>
+                    <div id="meal-breakdown">
+                        
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div id="info-view" class="form-inline justify-content-center">
+        <form id="info-form" action="">
+    
+        </form>
+    </div>
+
+    <script src="{% static 'foodom/index.js' %}?version=3"></script>
+{% endblock %}

@@ -1,0 +1,48 @@
+{% extends "foodom/layout.html" %}
+{% load static %}
+
+{% block body %}
+    <!--Form that asks for all of the infomation to add a new meal-->
+    <form>
+        {% csrf_token %}
+        <!--Name of Food-->
+        <div class="form-group">
+            <label for="exampleFormControlInput1">Name of Food</label>
+            <input type="text" name="name" id="name" class="form-control" required>
+        </div>
+        
+        <!--Number of servings the user ate-->
+        <div class="form-group">
+            <label for="exampleFormControlInput1">Servings</label>
+            <input type="number" name="servings" id="servings" min="1" class="form-control" required>
+        </div>
+
+        <!--Category of Food-->
+        <div class="form-group">
+            <label for="exampleFormControlSelect1">Category</label>
+            <select id="category" id="category" name="category" class="form-control">
+                <option>Breakfast</option>
+                <option>Lunch</option>
+                <option>Dinner</option>
+                <option>Fruit/Vegetable</option>
+                <option>Snack</option>
+                <option>Dessert</option>
+                <option>Drink</option>
+            </select>
+        </div>
+
+        <!--Pops up if the food API cannot find a food with the specific name-->
+        <div class="form-group" id="calories-place" style="display: none;">
+            <label for="exampleFormControlInput1">We were not able to find a food with that name in the database! Please enter the approximate number of calories this meal contained:</label>
+            <input type="number" min="0" id="calories" name="calories" class="form-control">
+        </div>
+
+        <!--Submit Button-->
+        <div class="alert alert-success" role="alert" style="width: fit-content; display: none;">
+            Your calories have been updated! Click the Home Link in the top-right to view your updated food statistics.
+        </div>
+        <button type="submit" class="btn btn-primary">Submit</button>
+    </form>
+
+    <script src="{% static 'foodom/addfood.js' %}?version=1"></script>
+{% endblock %}

@@ -1,0 +1,228 @@
+.navbar {
+    margin: 0 0 20px 0;
+    padding: 0;
+}
+
+body {
+    padding: 20px;
+    background-color: rgb(0, 0, 0);
+    color: white;
+}
+
+.top-nav {
+    background-color: black;
+}
+
+.brand-header {
+    font-size: 3rem;
+    font-family: 'Abril Fatface';
+    color: darkorange;
+}
+
+li a {
+    font-size: 1.5rem;
+    font-family: 'Abril Fatface';
+    color: rgb(226, 109, 55);
+}
+
+.form-control {
+    background-color: rgb(56, 56, 56);
+    border: 2px solid white;
+    color: white;
+}
+
+.form-control:focus {
+    background-color: rgb(56, 56, 56);
+    border: 2px solid white;
+    color: white;
+}
+
+.btn-primary {
+    background-color: darkorange;
+    border: 2px solid black;
+}
+
+.redir {
+    color: darkorange;
+}
+
+#info-form {
+    width: 100%;
+}
+
+.mega-container, .mega-header-container {
+    height: fit-content;
+    display: flex;
+}
+
+.food-header-container {
+    flex: 5;
+}
+
+.stats-header-container {
+    flex: 5;
+}
+
+.foods-title, .stats-title {
+    font-family: 'Abril Fatface';
+}
+
+.add-foods {
+    font-size: 25px;
+    font-weight: 700;
+    color: darkorange;
+    width: fit-content;
+    margin-right: 20px;
+}
+
+.add-foods:hover {
+    color: darkorange;
+}
+
+.foods-actions {
+    display: flex;
+    justify-content: flex-start;
+}
+
+.food-container {
+    flex: 5;
+    margin-left: -20px;
+    display: flex;
+    justify-content: flex-start;
+    flex-direction: column;
+    flex-wrap: wrap;
+}
+
+.food {
+    width: 90%;
+    height: 275px;
+    border-radius: 10px;
+    border: 2px solid gray;
+    text-align: center;
+    margin: 20px;
+    
+    padding: 20px;
+}
+
+.food-image {
+    height: 40%;
+    width: auto;
+    margin-bottom: 20px;
+}
+
+.food-name {
+    font-size: 35px;
+    font-weight: 700;
+}
+
+.show-category {
+    color: darkorange;
+    display: inline-block;
+    margin-right: 5px;
+}
+
+.food-calories {
+    font-size: 20px;
+    font-weight: 500;
+    margin-top: 10px;
+}
+
+.stats-container {
+    height: fit-content;
+    width: fit-content;
+    margin-top: 20px;
+    flex: 5;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.progress-bar {
+    background-color: black;
+    width: 80%;
+    height: 20px;
+    border: 4px solid gray;
+}
+
+.progress-completed {
+    background-color: #F012BE;
+    width: 0;
+    height: 100%;
+    animation: increase 2s ease-out 0s 1;
+    animation-fill-mode: forwards;
+    overflow: visible;
+}
+
+.progress-words {
+    color: rgb(177, 177, 177);
+    font-size: 15px;
+    font-weight: 500;
+}
+
+#category-breakdown, #meal-breakdown {
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.limit-warning {
+    display: none;
+}
+
+.alert-danger {
+    background-color: #FD6104;
+    color:white;
+    border: 2px solid white;
+}
+
+.spoonfork {
+    font-size: 100px;
+    color: rgb(255, 181, 71);
+    margin-bottom: 20px;
+}
+
+.egg {
+    font-size: 100px;
+    color: white;
+    margin-bottom: 20px;
+}
+
+.chicken {
+    font-size: 100px;
+    color: #eb600f;
+    margin-bottom: 20px;
+}
+
+.cookie {
+    font-size: 100px;
+    color: #d36e33;
+    margin-bottom: 20px;
+}
+
+.drink {
+    font-size: 100px;
+    color: rgb(209, 176, 28);
+    margin-bottom: 20px;
+}
+
+.fruit {
+    font-size: 100px;
+    color: red;
+    margin-bottom: 20px;
+}
+
+.dessert {
+    font-size: 100px;
+    color: rgb(224, 112, 131);
+    margin-bottom: 20px;
+}
+
+.pie-title {
+    font-size: 20px;
+}
+
+@media (max-width: 800px) {
+    .food {
+        margin-right: 50px;
+        height: 300px;
+    }
+}

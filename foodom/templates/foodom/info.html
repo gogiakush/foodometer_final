@@ -1,0 +1,95 @@
+{% extends "foodom/layout.html" %}
+
+{% block body %}
+    <div class="form-inline justify-content-center" >
+        <form id="info-form" action="">
+        
+        </form>
+    </div>
+
+    <script>
+        let questions = {
+            1: "What is your first name?",
+            2: "What is your last name?",
+            3: "What is your daily calorie limit?",
+        }
+        let count = Object.keys(questions).length;
+
+        document.addEventListener('DOMContentLoaded', () => displayQuestion(1));
+
+        function displayQuestion(num) {
+            let buttonContent = "Next";
+            if (num === count) {
+                buttonContent = "Submit";
+            }
+
+            let toggleBtn = document.createElement('button');
+            toggleBtn.className += "btn btn-primary";
+            toggleBtn.innerHTML = buttonContent;
+
+            let item = document.createElement('div');
+            item.style.display = 'block';
+            item.style.textAlign = 'center';
+            item.style.margin = 'auto';
+            item.style.marginTop = '5%';    //make submit button to input type="submit"
+            if(num != 3) {
+                item.innerHTML =
+                `
+                <h5>${questions[num]}</h5>
+                <input type="text" class="form-control" id=q${num.toString()} style="width: 40%;">
+                <br>
+                `;
+                item.appendChild(toggleBtn);
+            } else {
+                item.innerHTML =
+                `
+                <h5>${questions[num]}</h5>
+                <input type="number" class="form-control" id=q${num.toString()} style="width: 40%;">
+                <br>
+                <input type="submit" class="btn btn-primary" value="Submit">
+                <br>
+                `;
+            }
+
+            document.querySelector("#info-form").onsubmit = () => {
+                fetch(`/info`, {
+                    method: 'PUT',
+                    body: JSON.stringify({
+                        fname: document.querySelector('#q1').value,
+                        lname: document.querySelector('#q2').value,
+                        cal_limit: document.querySelector('#q3').value,
+                    })
+                })
+                    .then(() => {
+                        window.location.replace("{% url 'index' %}");
+                    })
+                return false;
+            }
+
+            toggleBtn.onclick = () => fade(item, document.querySelector(`#q${num}`).value, num + 1);
+            document.querySelector("#info-form").appendChild(item);
+        }
+
+        function fade(element, answer, num) {
+            var op = 1;  // initial opacity
+            var timer = setInterval(function () {
+                if (op <= 0.1) {
+                    clearInterval(timer);
+                    element.style.display = 'none';
+                }
+                element.style.opacity = op;
+                element.style.filter = 'alpha(opacity=' + op * 100 + ")";
+                op -= op * 0.1;
+            }, 10);
+            
+            setTimeout(() => {
+                if (num <= count) {
+                    displayQuestion(num);
+                } else {
+                    window.location.replace("{% url 'index' %}");
+                }
+            }, 500);
+            return false;
+        } 
+    </script>
+{% endblock %}
