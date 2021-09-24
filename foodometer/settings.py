@@ -23,9 +23,9 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 SECRET_KEY = '!tx@ul6$2$t&#v*2%vshcss#)y8f+_tya=%orit7vqol0a7zvi'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = False
+DEBUG = True
 
-ALLOWED_HOSTS = ['foodometerkg.herokuapp.com']
+ALLOWED_HOSTS = ['.vercel.app']
 
 
 # Application definition
@@ -76,12 +76,7 @@ WSGI_APPLICATION = 'foodometer.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/3.0/ref/settings/#databases
 
-DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
-    }
-}
+DATABASES = {}
 
 
 # Password validation
