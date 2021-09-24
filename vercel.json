@@ -1,13 +1,30 @@
 {
-    "builds": [{
-        "src": "foodometer/wsgi.py",
-        "use": "@ardnt/vercel-python-wsgi",
-        "config": { "maxLambdaSize": "15mb" }
-    }],
-    "routes": [
-        {
-            "src": "/(.*)",
-            "dest": "foodometer/wsgi.py"
+    "version": 2,
+    "name": "foodometer",
+    "builds": [
+      {
+        "src": "now_build_staticfiles.sh",
+        "use": "@now/static-build",
+        "config": {
+          "distDir": "staticfiles_build"
         }
+      },
+      {
+        "src": "foodometer/wsgi.py",
+        "use": "@ardnt/now-python-wsgi",
+        "config": {
+          "maxLambdaSize": "30mb"
+        }
+      }
+    ],
+    "routes": [
+      {
+        "src": "/static/(.*)",
+        "dest": "/static/$1"
+      },
+      {
+        "src": "/(.*)",
+        "dest": "foodometer/wsgi.py"
+      }
     ]
-}
+  }
